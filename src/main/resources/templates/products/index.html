@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Products</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-end">
+        <a href="/products/new" class="btn btn-primary">+ New Product</a>
+    </div>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product: ${products}">
+                <td th:text="${product.id}" />
+                <td th:text="${product.name}" />
+                <td th:text="${product.description}" />
+                <td th:text="${product.quantity}" />
+                <td th:text="${product.price}" />
+                <td>
+<!--                    <button class="btn btn-xs btn-primary"></button>-->
+                    <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-xs btn-secondary">Update</a>
+                    <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-xs btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>New Product</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="#" th:action="@{/products/new}" th:object="${product}" method="post" class="needs-validation" novalidate="">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" th:class="'form-control '+ ${#fields.hasErrors('name') ? 'is-invalid' : ''}"
+                       th:field="*{name}" id="name" placeholder="" value="" required="">
+                <div class="invalid-feedback" th:errors="*{name}">Erro</div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" th:class="'form-control '+ ${#fields.hasErrors('description') ? 'is-invalid' : ''}"
+                       th:field="*{description}" id="description" placeholder="" value="" required="">
+                <div class="invalid-feedback" th:errors="*{description}">Erro</div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" th:class="'form-control '+ ${#fields.hasErrors('quantity') ? 'is-invalid' : ''}"
+                       th:field="*{quantity}" id="quantity" placeholder="">
+                <div class="invalid-feedback" th:errors="*{quantity}">Erro</div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">R$</span>
+                    <input type="text" th:class="'form-control ' + ${#fields.hasErrors('price') ? 'is-invalid' : ''}"
+                           th:field="*{price}" id="price" placeholder="R$ 9,99" required="">
+                    <div class="invalid-feedback" th:errors="*{price}">Erro</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="w-100 btn btn-primary mt-4" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

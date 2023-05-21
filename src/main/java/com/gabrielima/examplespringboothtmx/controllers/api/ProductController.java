@@ -1,4 +1,4 @@
-package com.gabrielima.examplespringboothtmx.controllers;
+package com.gabrielima.examplespringboothtmx.controllers.api;
 
 import com.gabrielima.examplespringboothtmx.exceptions.NotFoundException;
 import com.gabrielima.examplespringboothtmx.models.Product;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/products")
+@RequestMapping(path = "/api/products")
 public class ProductController {
 
     private final ProductService productService;

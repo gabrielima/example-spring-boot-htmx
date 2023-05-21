@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Update Product</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="#" th:action="@{/products/edit/{id}(id=${product.id}})}" th:object="${product}" method="post" class="needs-validation" novalidate="">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="" value="" required="">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" th:field="*{description}" id="description" placeholder="" value="" required="">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" th:field="*{quantity}" id="quantity" placeholder="">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">R$</span>
+                    <input type="text" class="form-control" th:field="*{price}" id="price" placeholder="R$ 9,99" required="">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="w-100 btn btn-primary mt-4" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

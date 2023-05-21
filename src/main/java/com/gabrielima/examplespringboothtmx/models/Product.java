@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,8 +22,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Field \"name\" is mandatory")
     private String name;
+
+    @NotBlank(message = "Field \"description\" is mandatory")
     private String description;
+
+    @NotNull(message = "Field \"quantity\" is mandatory")
     private Integer quantity;
+
+    @NotNull(message = "Field \"price\" is mandatory")
     private Double price;
 }
