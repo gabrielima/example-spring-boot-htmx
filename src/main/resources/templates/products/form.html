@@ -37,7 +37,7 @@
 
             <div class="col-sm-6">
                 <label for="price" class="form-label">Price</label>
-                <div class="input-group has-validation">
+                <div class="input-group" th:classappend=" ${#fields.hasErrors('price') ? 'has-validation' : ''}">
                     <span class="input-group-text">R$</span>
                     <input type="text" class="form-control" th:field="*{price}" id="price"
                            th:classappend=" ${#fields.hasErrors('price') ? 'is-invalid' : ''}">
