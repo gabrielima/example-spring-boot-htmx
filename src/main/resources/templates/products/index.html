@@ -13,25 +13,24 @@
     <table class="table table-striped mt-3">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="product: ${products}">
-                <td th:text="${product.id}" />
-                <td th:text="${product.name}" />
-                <td th:text="${product.description}" />
-                <td th:text="${product.quantity}" />
-                <td th:text="${product.price}" />
-                <td>
-<!--                    <button class="btn btn-xs btn-primary"></button>-->
-                    <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-xs btn-secondary">Update</a>
-                    <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-xs btn-danger">Delete</a>
+                <td class="text-center" th:text="${product.id}" />
+                <td class="text-center" th:text="${product.name}" />
+                <td class="text-center" th:text="${product.description}" />
+                <td class="text-center" th:text="${product.quantity}" />
+                <td class="text-center" th:text="${product.price}" />
+                <td class="text-center">
+                    <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-sm btn-info">Update</a>
+                    <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
         </tbody>

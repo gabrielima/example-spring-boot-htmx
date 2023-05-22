@@ -28,31 +28,20 @@ public class ProductsController {
 
     @GetMapping("/new")
     public String showNewForm(Product product) {
-        return "products/new";
-    }
-
-    @PostMapping(value = "/new")
-    public String addProduct(@Valid Product product, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "products/new";
-        }
-
-        productService.save(product);
-        return "redirect:/products";
+        return "products/form";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) throws NotFoundException {
         Product product = productService.find(id).orElseThrow(NotFoundException::new);
         model.addAttribute("product", product);
-        return "products/edit";
+        return "products/form";
     }
 
-    @PostMapping("/edit/{id}")
-    public String editProduct(@PathVariable("id") Long id, @Valid Product product, BindingResult result, Model model) {
+    @PostMapping("/save")
+    public String saveProduct(@Valid Product product, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            product.setId(id);
-            return "products/edit";
+            return "products/form";
         }
 
         productService.save(product);
