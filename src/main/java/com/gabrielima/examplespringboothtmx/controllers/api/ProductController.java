@@ -35,7 +35,6 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product update(@PathVariable("id") Long id, @RequestBody Product product) throws NotFoundException {
         productService.find(id).orElseThrow(NotFoundException::new);
-
         return productService.save(product);
     }
 
@@ -43,7 +42,6 @@ public class ProductController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) throws NotFoundException {
         Product product = productService.find(id).orElseThrow(NotFoundException::new);
-
         productService.delete(product);
     }
 }

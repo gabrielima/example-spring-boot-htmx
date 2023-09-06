@@ -26,6 +26,13 @@ public class ProductsController {
         return "products/index";
     }
 
+    @GetMapping("/{id}")
+    public String showShowForm(@PathVariable("id") Long id, Model model) throws NotFoundException {
+        Product product = productService.find(id).orElseThrow(NotFoundException::new);
+        model.addAttribute("product", product);
+        return "products/show";
+    }
+
     @GetMapping("/new")
     public String showNewForm(Product product) {
         return "products/form";
@@ -44,8 +51,8 @@ public class ProductsController {
             return "products/form";
         }
 
-        productService.save(product);
-        return "redirect:/products";
+        product = productService.save(product);
+        return "redirect:/products/" + product.getId();
     }
 
     @GetMapping("/delete/{id}")

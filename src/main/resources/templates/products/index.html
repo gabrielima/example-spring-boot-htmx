@@ -23,12 +23,13 @@
         </thead>
         <tbody>
             <tr th:each="product: ${products}">
-                <td class="text-center" th:text="${product.id}" />
-                <td class="text-center" th:text="${product.name}" />
-                <td class="text-center" th:text="${product.description}" />
-                <td class="text-center" th:text="${product.quantity}" />
-                <td class="text-center" th:text="${product.price}" />
+                <td class="text-center" th:text="${product.id}"></td>
+                <td class="text-center" th:text="${product.name}"></td>
+                <td class="text-center" th:text="${product.description}"></td>
+                <td class="text-center" th:text="${product.quantity}"></td>
+                <td class="text-center" th:text="${product.price}"></td>
                 <td class="text-center">
+                    <a th:href="@{/products/{id}(id=${product.id})}" class="btn btn-sm btn-primary">Show</a>
                     <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-sm btn-info">Update</a>
                     <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-sm btn-danger">Delete</a>
                 </td>
